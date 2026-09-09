@@ -18,6 +18,7 @@ import {
   Footprints,
   ChevronRight,
   ArrowLeft,
+  LogOut,
 } from 'lucide-react';
 import { useOrderStore } from '@/lib/storage/orderStore';
 import { STORE_INFO } from '@/lib/mockData';
@@ -41,6 +42,11 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
   ).length;
 
   const currentNav = NAV_ITEMS.find(item => item.href === pathname);
+
+    const handleLogout = () => {
+    document.cookie = "sneakercare_session=; path=/; max-age=0";
+    window.location.href = "/login";
+  };
 
   const handleReset = () => {
     resetDemoData();
@@ -266,6 +272,14 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
               <PlusCircle className="w-4 h-4" />
               <span className="hidden sm:inline">+ Input Order Baru</span>
             </Link>
+
+            <button
+              onClick={handleLogout}
+              className="p-2 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition"
+              title="Keluar / Kunci Kasir"
+            >
+              <LogOut className="w-4 h-4" />
+            </button>
           </div>
         </header>
 
