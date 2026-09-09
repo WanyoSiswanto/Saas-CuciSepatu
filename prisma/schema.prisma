@@ -1,0 +1,140 @@
+// Prisma Schema for Shoe Laundry & Care Management System
+// Ready for PostgreSQL / Supabase / Neon or SQLite
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum PaymentStatus {
+  UNPAID
+  DOWN_PAYMENT
+  PAID
+}
+
+enum OrderStatus {
+  PENDING           // Antrean Masuk
+  IN_TREATMENT      // Proses Pencucian / Treatment
+  DRYING            // Pengeringan
+  QC_PACKING        // Quality Check & Packing
+  READY_FOR_PICKUP  // Siap Diambil
+  COMPLETED         // Selesai Diambil
+  CANCELLED         // Dibatalkan
+}
+
+enum MaterialType {
+  CANVAS
+  SUEDE
+  LEATHER
+  NUBUCK
+  MESH_KNIT
+  COMBINATION
+  RUBBER
+}
+
+model Store {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  phone       String
+  address     String
+  logoUrl     String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  orders      Order[]
+  customers   Customer[]
+  services    Service[]
+}
+
+model Customer {
+  id          String    @id @default(cuid())
+  storeId     String?
+  store       Store?    @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  name        String
+  phone       String    // WhatsApp number (formatted: 628...)
+  address     String?
+  totalOrders Int       @default(0)
+  notes       String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  orders      Order[]
+
+  @@index([phone])
+}
+
+model Service {
+  id          String    @id @default(cuid())
+  storeId     String?
+  store       Store?    @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  name        String    // e.g., Deep Clean, Fast Clean, Unyellowing, Repaint, Reglue
+  description String?
+  basePrice   Int       // IDR (Rupiah)
+  estDays     Int       @default(3)
+  isActive    Boolean   @default(true)
+  orderItems  OrderItem[]
+}
+
+model Order {
+  id            String         @id @default(cuid())
+  storeId       String?
+  store         Store?         @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  orderCode     String         @unique // e.g., CS-2609-001
+  customerId    String
+  customer      Customer       @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  status        OrderStatus    @default(PENDING)
+  paymentStatus PaymentStatus  @default(UNPAID)
+  totalAmount   Int            // Total tagihan dalam Rupiah
+  paidAmount    Int            @default(0) // Jumlah terbayar (untuk DP)
+  isExpress     Boolean        @default(false)
+  notes         String?
+  entryDate     DateTime       @default(now())
+  targetDate    DateTime
+  completedDate DateTime?
+  items         OrderItem[]
+  statusLogs    StatusLog[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  @@index([orderCode])
+  @@index([status])
+}
+
+model OrderItem {
+  id            String        @id @default(cuid())
+  orderId       String
+  order         Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  serviceId     String?
+  service       Service?      @relation(fields: [serviceId], references: [id])
+  serviceName   String
+  shoeBrand     String        // e.g., Nike, Adidas, New Balance, Converse
+  shoeModel     String        // e.g., Air Jordan 1 Chicago, 990v5 Grey
+  shoeColor     String
+  material      MaterialType  @default(CANVAS)
+  price         Int
+  initialNotes  String?       // Catatan noda, goresan, sol terkelupas awal
+  photos        ItemPhoto[]
+}
+
+model ItemPhoto {
+  id          String    @id @default(cuid())
+  itemId      String
+  item        OrderItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  photoType   String    // 'BEFORE' or 'AFTER'
+  photoUrl    String
+  caption     String?   // e.g., 'Kondisi toe box sebelum cuci'
+  createdAt   DateTime  @default(now())
+}
+
+model StatusLog {
+  id          String       @id @default(cuid())
+  orderId     String
+  order       Order        @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  status      OrderStatus
+  notes       String?
+  changedBy   String?      // Kasir / Teknisi
+  createdAt   DateTime     @default(now())
+}
