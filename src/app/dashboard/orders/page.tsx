@@ -29,7 +29,6 @@ export default function OrdersListPage() {
   const [paymentModalOrder, setPaymentModalOrder] = useState<Order | null>(null);
 
   const filteredOrders = orders.filter(order => {
-    // Search match
     const q = searchQuery.toLowerCase();
     const matchSearch =
       order.orderCode.toLowerCase().includes(q) ||
@@ -41,10 +40,8 @@ export default function OrdersListPage() {
 
     if (!matchSearch) return false;
 
-    // Status filter
     if (statusFilter !== 'ALL' && order.status !== statusFilter) return false;
 
-    // Payment filter
     if (paymentFilter !== 'ALL' && order.paymentStatus !== paymentFilter) return false;
 
     return true;
@@ -60,27 +57,27 @@ export default function OrdersListPage() {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
-            <Receipt className="w-5 h-5 text-emerald-400" />
+          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+            <Receipt className="w-6 h-6 text-blue-600" />
             <span>Daftar Seluruh Pesanan Workshop</span>
           </h1>
-          <p className="text-xs text-zinc-400 mt-0.5">
+          <p className="text-xs text-slate-500 mt-1">
             Database pesanan masuk, riwayat nota kasir, status pelunasan, dan akses langsung ke WhatsApp pelanggan.
           </p>
         </div>
       </div>
 
       {/* Filter & Search Bar */}
-      <div className="p-4 rounded-2xl bg-[#12151c] border border-white/[0.08] flex flex-col sm:flex-row items-center gap-3">
+      <div className="p-4 rounded-3xl bg-white border border-slate-200/80 shadow-xs flex flex-col sm:flex-row items-center gap-3">
         {/* Search Input */}
         <div className="relative flex-1 w-full">
-          <Search className="w-4 h-4 text-zinc-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             placeholder="Cari kode nota (CS-...), nama pelanggan, atau merk sepatu..."
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 rounded-xl bg-zinc-950/60 border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500"
+            className="w-full pl-9 pr-4 py-2.5 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-blue-500 transition"
           />
         </div>
 
@@ -89,7 +86,7 @@ export default function OrdersListPage() {
           <select
             value={statusFilter}
             onChange={e => setStatusFilter(e.target.value)}
-            className="px-3 py-2 rounded-xl bg-zinc-950/60 border border-white/10 text-white text-xs focus:outline-none focus:border-emerald-500"
+            className="px-3 py-2.5 rounded-2xl bg-slate-50 border border-slate-200 text-slate-800 text-xs font-semibold focus:outline-none focus:bg-white focus:border-blue-500"
           >
             <option value="ALL">Semua Status Pengerjaan</option>
             <option value="PENDING">Antrean Masuk</option>
@@ -103,7 +100,7 @@ export default function OrdersListPage() {
           <select
             value={paymentFilter}
             onChange={e => setPaymentFilter(e.target.value)}
-            className="px-3 py-2 rounded-xl bg-zinc-950/60 border border-white/10 text-white text-xs focus:outline-none focus:border-emerald-500"
+            className="px-3 py-2.5 rounded-2xl bg-slate-50 border border-slate-200 text-slate-800 text-xs font-semibold focus:outline-none focus:bg-white focus:border-blue-500"
           >
             <option value="ALL">Semua Pembayaran</option>
             <option value="PAID">Lunas</option>
@@ -114,23 +111,23 @@ export default function OrdersListPage() {
       </div>
 
       {/* Orders Table Container */}
-      <div className="rounded-2xl bg-[#12151c] border border-white/[0.08] overflow-hidden">
+      <div className="rounded-3xl bg-white border border-slate-200/80 shadow-xs overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#101318] text-zinc-400 border-b border-white/[0.08] font-semibold text-[11px] uppercase tracking-wider">
+            <thead className="bg-slate-50 text-slate-600 border-b border-slate-200 font-extrabold text-[11px] uppercase tracking-wider">
               <tr>
-                <th className="px-4 py-3.5">Kode Nota & Tgl</th>
-                <th className="px-4 py-3.5">Pelanggan</th>
-                <th className="px-4 py-3.5">Sepatu & Layanan</th>
-                <th className="px-4 py-3.5">Status Pengerjaan</th>
-                <th className="px-4 py-3.5">Pembayaran</th>
-                <th className="px-4 py-3.5 text-right">Aksi</th>
+                <th className="px-5 py-4">Kode Nota & Tgl</th>
+                <th className="px-5 py-4">Pelanggan</th>
+                <th className="px-5 py-4">Sepatu & Layanan</th>
+                <th className="px-5 py-4">Status Pengerjaan</th>
+                <th className="px-5 py-4">Pembayaran</th>
+                <th className="px-5 py-4 text-right">Aksi</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5">
+            <tbody className="divide-y divide-slate-100">
               {filteredOrders.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-4 py-12 text-center text-zinc-500">
+                  <td colSpan={6} className="px-5 py-12 text-center text-slate-400 font-medium">
                     Tidak ditemukan pesanan yang cocok dengan filter pencarian.
                   </td>
                 </tr>
@@ -140,61 +137,61 @@ export default function OrdersListPage() {
                   const sisaBayar = order.totalAmount - order.paidAmount;
 
                   return (
-                    <tr key={order.id} className="hover:bg-white/[0.02] transition">
+                    <tr key={order.id} className="hover:bg-blue-50/40 transition">
                       {/* Kode Nota & Tgl */}
-                      <td className="px-4 py-3.5 space-y-1">
+                      <td className="px-5 py-4 space-y-1">
                         <div className="flex items-center gap-1.5">
-                          <span className="font-mono font-bold text-white text-xs">
+                          <span className="font-mono font-extrabold text-slate-900 text-xs">
                             {order.orderCode}
                           </span>
                           {order.isExpress && (
-                            <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-amber-500/20 text-amber-300">
+                            <span className="px-2 py-0.2 rounded-full text-[9px] font-extrabold bg-orange-50 text-orange-700 border border-orange-200">
                               EXP
                             </span>
                           )}
                         </div>
-                        <p className="text-[10px] text-zinc-500 font-mono">
+                        <p className="text-[10px] text-slate-500 font-mono">
                           {new Date(order.entryDate).toLocaleDateString('id-ID')}
                         </p>
                       </td>
 
                       {/* Pelanggan */}
-                      <td className="px-4 py-3.5 space-y-0.5">
-                        <p className="font-semibold text-white">{order.customerName}</p>
-                        <p className="text-[11px] text-zinc-400 font-mono">{order.customerPhone}</p>
+                      <td className="px-5 py-4 space-y-0.5">
+                        <p className="font-bold text-slate-900">{order.customerName}</p>
+                        <p className="text-[11px] text-slate-500 font-mono">{order.customerPhone}</p>
                       </td>
 
                       {/* Sepatu & Layanan */}
-                      <td className="px-4 py-3.5 space-y-0.5">
-                        <p className="font-medium text-zinc-200">
+                      <td className="px-5 py-4 space-y-0.5">
+                        <p className="font-bold text-slate-800">
                           {item?.shoeBrand} {item?.shoeModel}
                         </p>
-                        <p className="text-[11px] text-zinc-400">
+                        <p className="text-[11px] text-slate-500">
                           {item?.serviceName} ({item?.material})
                         </p>
                       </td>
 
                       {/* Status */}
-                      <td className="px-4 py-3.5">
+                      <td className="px-5 py-4">
                         <StatusBadge status={order.status} />
                       </td>
 
                       {/* Pembayaran */}
-                      <td className="px-4 py-3.5 space-y-1">
+                      <td className="px-5 py-4 space-y-1">
                         <div className="flex items-center gap-1.5">
                           <PaymentBadge
                             status={order.paymentStatus}
                             paidAmount={order.paidAmount}
                             totalAmount={order.totalAmount}
                           />
-                          <span className="font-mono text-zinc-200 font-medium">
+                          <span className="font-mono text-slate-800 font-bold">
                             {formatRupiah(order.totalAmount)}
                           </span>
                         </div>
                         {sisaBayar > 0 && (
                           <button
                             onClick={() => setPaymentModalOrder(order)}
-                            className="text-[10px] text-amber-400 hover:underline flex items-center gap-1"
+                            className="text-[10px] text-amber-700 font-bold hover:underline flex items-center gap-1"
                           >
                             <span>Sisa {formatRupiah(sisaBayar)} (Lunasi)</span>
                           </button>
@@ -202,14 +199,14 @@ export default function OrdersListPage() {
                       </td>
 
                       {/* Aksi */}
-                      <td className="px-4 py-3.5 text-right">
+                      <td className="px-5 py-4 text-right">
                         <div className="flex items-center justify-end gap-1.5">
                           <button
                             onClick={() => setSelectedReceiptOrder(order)}
                             title="Buka & Cetak Nota"
-                            className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white transition"
+                            className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition"
                           >
-                            <Printer className="w-3.5 h-3.5" />
+                            <Printer className="w-4 h-4" />
                           </button>
 
                           <button
@@ -221,9 +218,9 @@ export default function OrdersListPage() {
                               window.open(url, '_blank');
                             }}
                             title="Kirim Nota via WhatsApp"
-                            className="p-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 transition"
+                            className="p-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 transition"
                           >
-                            <MessageSquare className="w-3.5 h-3.5" />
+                            <MessageSquare className="w-4 h-4" />
                           </button>
 
                           <a
@@ -231,9 +228,9 @@ export default function OrdersListPage() {
                             target="_blank"
                             rel="noreferrer"
                             title="Tracking Publik"
-                            className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition"
+                            className="p-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 transition"
                           >
-                            <ExternalLink className="w-3.5 h-3.5" />
+                            <ExternalLink className="w-4 h-4" />
                           </a>
                         </div>
                       </td>
@@ -248,49 +245,49 @@ export default function OrdersListPage() {
 
       {/* Quick Payment Settle Modal */}
       {paymentModalOrder && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="w-full max-w-sm bg-[#13161c] border border-white/10 rounded-2xl p-5 space-y-4">
-            <h3 className="text-sm font-bold text-white flex items-center gap-2">
-              <DollarSign className="w-4 h-4 text-emerald-400" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs">
+          <div className="w-full max-w-sm bg-white border border-slate-200 rounded-3xl p-6 space-y-4 shadow-2xl">
+            <h3 className="text-base font-extrabold text-slate-900 flex items-center gap-2">
+              <DollarSign className="w-5 h-5 text-emerald-600" />
               <span>Konfirmasi Pelunasan Nota</span>
             </h3>
-            <div className="p-3 rounded-xl bg-zinc-950/60 border border-white/5 space-y-1.5 text-xs">
-              <div className="flex justify-between text-zinc-400">
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 text-xs">
+              <div className="flex justify-between text-slate-600">
                 <span>No. Nota:</span>
-                <span className="font-mono text-white">{paymentModalOrder.orderCode}</span>
+                <span className="font-mono font-bold text-slate-900">{paymentModalOrder.orderCode}</span>
               </div>
-              <div className="flex justify-between text-zinc-400">
+              <div className="flex justify-between text-slate-600">
                 <span>Pelanggan:</span>
-                <span className="text-white">{paymentModalOrder.customerName}</span>
+                <span className="text-slate-900 font-bold">{paymentModalOrder.customerName}</span>
               </div>
-              <div className="flex justify-between text-zinc-400">
+              <div className="flex justify-between text-slate-600">
                 <span>Total Tagihan:</span>
-                <span className="font-mono text-white">{formatRupiah(paymentModalOrder.totalAmount)}</span>
+                <span className="font-mono font-bold text-slate-900">{formatRupiah(paymentModalOrder.totalAmount)}</span>
               </div>
-              <div className="flex justify-between text-zinc-400">
+              <div className="flex justify-between text-slate-600">
                 <span>Sudah Masuk (DP):</span>
-                <span className="font-mono text-zinc-300">{formatRupiah(paymentModalOrder.paidAmount)}</span>
+                <span className="font-mono text-slate-700">{formatRupiah(paymentModalOrder.paidAmount)}</span>
               </div>
-              <div className="pt-1.5 border-t border-white/10 flex justify-between font-bold text-amber-400">
-                <span>Sisa yang Harus Dilunasi:</span>
-                <span className="font-mono">{formatRupiah(paymentModalOrder.totalAmount - paymentModalOrder.paidAmount)}</span>
+              <div className="pt-2 border-t border-slate-200 flex justify-between font-extrabold text-amber-700">
+                <span>Sisa Tagihan:</span>
+                <span className="font-mono text-sm">{formatRupiah(paymentModalOrder.totalAmount - paymentModalOrder.paidAmount)}</span>
               </div>
             </div>
 
-            <p className="text-[11px] text-zinc-400">
+            <p className="text-[11px] text-slate-500 leading-relaxed">
               Pastikan uang tunai atau bukti transfer QRIS sudah diterima kasir sebelum mengonfirmasi pelunasan.
             </p>
 
             <div className="flex items-center justify-end gap-2 pt-2">
               <button
                 onClick={() => setPaymentModalOrder(null)}
-                className="px-3 py-1.5 rounded-lg text-xs text-zinc-400 hover:text-white bg-white/5"
+                className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 bg-slate-100"
               >
                 Batal
               </button>
               <button
                 onClick={() => handleSettlePayment(paymentModalOrder)}
-                className="px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-500"
+                className="px-4 py-2 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-xs"
               >
                 Konfirmasi Lunas
               </button>

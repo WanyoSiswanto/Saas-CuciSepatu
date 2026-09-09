@@ -137,7 +137,6 @@ export default function POSPage() {
       return;
     }
 
-    // Determine target date
     const now = new Date();
     const estDays = isExpress ? 1 : 3;
     const targetDate = new Date(now.getTime() + estDays * 24 * 60 * 60 * 1000).toISOString();
@@ -194,11 +193,11 @@ export default function POSPage() {
       {/* Page Title */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
-            <Footprints className="w-5 h-5 text-emerald-400" />
+          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+            <Footprints className="w-6 h-6 text-blue-600" />
             <span>Penerimaan Sepatu Masuk (POS Counter)</span>
           </h1>
-          <p className="text-xs text-zinc-400 mt-0.5">
+          <p className="text-xs text-slate-500 mt-1">
             Pencatatan data pelanggan, material sepatu, foto kondisi awal, dan cetak nota kasir.
           </p>
         </div>
@@ -206,16 +205,16 @@ export default function POSPage() {
         <button
           type="button"
           onClick={handleUseDemoPhoto}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-emerald-400 text-xs font-semibold border border-white/10 transition"
+          className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-blue-50 hover:bg-blue-100/80 text-blue-700 text-xs font-bold border border-blue-200 transition shadow-2xs"
         >
-          <Sparkles className="w-3.5 h-3.5" />
+          <Sparkles className="w-4 h-4 text-amber-500" />
           <span>Isi Contoh Otomatis</span>
         </button>
       </div>
 
       {errorMsg && (
-        <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2">
-          <AlertCircle className="w-4 h-4 shrink-0" />
+        <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-xs font-semibold flex items-center gap-2">
+          <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
           <span>{errorMsg}</span>
         </div>
       )}
@@ -224,9 +223,9 @@ export default function POSPage() {
         {/* Left 2 Cols: Form Details */}
         <div className="lg:col-span-2 space-y-5">
           {/* 1. Customer Information */}
-          <div className="p-5 rounded-2xl bg-[#12151c] border border-white/[0.08] space-y-4">
-            <h2 className="text-xs font-bold text-zinc-300 uppercase tracking-wider flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-[10px]">
+          <div className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-4">
+            <h2 className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
+              <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-extrabold">
                 1
               </span>
               <span>Informasi Pelanggan</span>
@@ -234,8 +233,8 @@ export default function POSPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label className="text-xs font-medium text-zinc-300">
-                  Nama Lengkap Pelanggan <span className="text-rose-400">*</span>
+                <label className="text-xs font-bold text-slate-700">
+                  Nama Lengkap Pelanggan <span className="text-rose-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -243,13 +242,13 @@ export default function POSPage() {
                   placeholder="Contoh: Budi Santoso"
                   value={customerName}
                   onChange={e => setCustomerName(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-zinc-950/60 border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-blue-500 transition"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs font-medium text-zinc-300">
-                  Nomor WhatsApp <span className="text-rose-400">*</span>
+                <label className="text-xs font-bold text-slate-700">
+                  Nomor WhatsApp <span className="text-rose-500">*</span>
                 </label>
                 <input
                   type="tel"
@@ -257,14 +256,14 @@ export default function POSPage() {
                   placeholder="Contoh: 081234567890"
                   value={customerPhone}
                   onChange={e => setCustomerPhone(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-zinc-950/60 border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-blue-500 transition"
                 />
-                <span className="text-[10px] text-zinc-500">Nota & link tracking dikirim ke nomor ini</span>
+                <span className="text-[10px] text-slate-400 font-medium">Nota & link tracking dikirim ke nomor ini</span>
               </div>
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-xs font-medium text-zinc-400">
+              <label className="text-xs font-bold text-slate-700">
                 Alamat / Kota (Opsional)
               </label>
               <input
@@ -272,15 +271,15 @@ export default function POSPage() {
                 placeholder="Contoh: Tebet, Jakarta Selatan"
                 value={customerAddress}
                 onChange={e => setCustomerAddress(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-zinc-950/60 border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-blue-500 transition"
               />
             </div>
           </div>
 
           {/* 2. Shoe Specifications */}
-          <div className="p-5 rounded-2xl bg-[#12151c] border border-white/[0.08] space-y-4">
-            <h2 className="text-xs font-bold text-zinc-300 uppercase tracking-wider flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-[10px]">
+          <div className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-4">
+            <h2 className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
+              <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-extrabold">
                 2
               </span>
               <span>Identitas & Bahan Sepatu</span>
@@ -288,14 +287,14 @@ export default function POSPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="space-y-1.5">
-                <label className="text-xs font-medium text-zinc-300">Brand Sepatu</label>
+                <label className="text-xs font-bold text-slate-700">Brand Sepatu</label>
                 <select
                   value={shoeBrand}
                   onChange={e => setShoeBrand(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-zinc-950/60 border border-white/10 text-white text-xs focus:outline-none focus:border-emerald-500"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-blue-500"
                 >
                   {POPULAR_BRANDS.map(brand => (
-                    <option key={brand} value={brand} className="bg-zinc-900 text-white">
+                    <option key={brand} value={brand}>
                       {brand}
                     </option>
                   ))}
@@ -303,8 +302,8 @@ export default function POSPage() {
               </div>
 
               <div className="space-y-1.5 sm:col-span-2">
-                <label className="text-xs font-medium text-zinc-300">
-                  Model / Seri Sepatu <span className="text-rose-400">*</span>
+                <label className="text-xs font-bold text-slate-700">
+                  Model / Seri Sepatu <span className="text-rose-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -312,41 +311,41 @@ export default function POSPage() {
                   placeholder="Contoh: Air Jordan 1 High Chicago / Samba OG"
                   value={shoeModel}
                   onChange={e => setShoeModel(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-zinc-950/60 border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-blue-500 transition"
                 />
               </div>
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-xs font-medium text-zinc-300">Warna Sepatu</label>
+              <label className="text-xs font-bold text-slate-700">Warna Sepatu</label>
               <input
                 type="text"
                 placeholder="Contoh: Red / White / Black"
                 value={shoeColor}
                 onChange={e => setShoeColor(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-zinc-950/60 border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-blue-500 transition"
               />
             </div>
 
             {/* Material Grid */}
             <div className="space-y-2">
-              <label className="text-xs font-medium text-zinc-300">
+              <label className="text-xs font-bold text-slate-700">
                 Material Dominan (Menentukan Treatment & Sabun)
               </label>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
                 {MATERIALS.map(m => (
                   <button
                     type="button"
                     key={m.value}
                     onClick={() => setMaterial(m.value)}
-                    className={`p-2.5 rounded-xl border text-left transition ${
+                    className={`p-3 rounded-2xl border text-left transition ${
                       material === m.value
-                        ? 'bg-emerald-500/10 border-emerald-500/50 text-white shadow-sm'
-                        : 'bg-zinc-950/40 border-white/5 text-zinc-400 hover:border-white/15'
+                        ? 'bg-blue-50/90 border-blue-500 text-blue-950 shadow-xs'
+                        : 'bg-slate-50/60 border-slate-200/80 text-slate-600 hover:border-slate-300'
                     }`}
                   >
-                    <p className="text-xs font-semibold">{m.label}</p>
-                    <p className="text-[10px] text-zinc-500 mt-0.5">{m.note}</p>
+                    <p className="text-xs font-bold">{m.label}</p>
+                    <p className="text-[10px] text-slate-500 mt-0.5">{m.note}</p>
                   </button>
                 ))}
               </div>
@@ -354,34 +353,38 @@ export default function POSPage() {
 
             {/* Initial Condition Notes */}
             <div className="space-y-1.5">
-              <label className="text-xs font-medium text-zinc-300 flex items-center justify-between">
+              <label className="text-xs font-bold text-slate-700 flex items-center justify-between">
                 <span>Catatan Kondisi Awal & Kerusakan Bawaan</span>
-                <span className="text-[10px] text-zinc-500">Penting untuk proteksi komplain</span>
+                <span className="text-[10px] text-amber-700 font-semibold bg-amber-50 px-2 py-0.5 rounded-full">
+                  Penting untuk proteksi komplain
+                </span>
               </label>
               <textarea
                 rows={2}
                 placeholder="Contoh: Sol menganga di sisi luar 2cm, noda minyak di lidah sepatu, baret di heel."
                 value={initialNotes}
                 onChange={e => setInitialNotes(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-zinc-950/60 border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500"
+                className="w-full px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-blue-500 transition"
               />
             </div>
           </div>
 
           {/* 3. Foto Dokumentasi Kondisi Awal (Before Photo) */}
-          <div className="p-5 rounded-2xl bg-[#12151c] border border-white/[0.08] space-y-4">
+          <div className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-xs font-bold text-zinc-300 uppercase tracking-wider flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-[10px]">
+              <h2 className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
+                <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-extrabold">
                   3
                 </span>
                 <span>Foto Kondisi Awal (Before)</span>
               </h2>
-              <span className="text-[10px] text-emerald-400 font-medium">Bebas komplain kerusakan</span>
+              <span className="text-[11px] text-emerald-700 font-bold bg-emerald-50 px-2.5 py-0.5 rounded-full">
+                Bebas komplain kerusakan
+              </span>
             </div>
 
             {beforePhotoUrl ? (
-              <div className="relative rounded-xl overflow-hidden border border-white/10 aspect-[16/9] max-h-60 bg-zinc-950">
+              <div className="relative rounded-2xl overflow-hidden border border-slate-200 aspect-[16/9] max-h-60 bg-slate-100 shadow-xs">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={beforePhotoUrl}
@@ -391,21 +394,21 @@ export default function POSPage() {
                 <button
                   type="button"
                   onClick={() => setBeforePhotoUrl('')}
-                  className="absolute top-3 right-3 p-1.5 rounded-lg bg-black/70 hover:bg-rose-600 text-white transition"
+                  className="absolute top-3 right-3 p-2 rounded-xl bg-slate-900/80 hover:bg-rose-600 text-white transition shadow-md"
                   title="Hapus foto"
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>
-                <div className="absolute bottom-3 left-3 bg-black/70 px-2.5 py-1 rounded text-xs text-white font-medium">
+                <div className="absolute bottom-3 left-3 bg-slate-900/80 text-white px-3 py-1 rounded-full text-xs font-bold">
                   Foto Sebelum Dicuci (Tersimpan)
                 </div>
               </div>
             ) : (
               <div className="flex flex-col sm:flex-row items-center gap-3">
-                <label className="flex-1 w-full flex flex-col items-center justify-center p-6 border-2 border-dashed border-white/10 hover:border-emerald-500/40 rounded-xl cursor-pointer bg-zinc-950/40 hover:bg-zinc-950/80 transition group">
-                  <Camera className="w-6 h-6 text-zinc-500 group-hover:text-emerald-400 mb-2 transition" />
-                  <span className="text-xs font-medium text-zinc-300">Ambil Foto via Kamera / Galeri</span>
-                  <span className="text-[10px] text-zinc-500 mt-0.5">JPG, PNG atau WebP</span>
+                <label className="flex-1 w-full flex flex-col items-center justify-center p-6 border-2 border-dashed border-slate-200 hover:border-blue-400 rounded-2xl cursor-pointer bg-slate-50 hover:bg-blue-50/40 transition group">
+                  <Camera className="w-7 h-7 text-slate-400 group-hover:text-blue-600 mb-2 transition" />
+                  <span className="text-xs font-bold text-slate-700">Ambil Foto via Kamera / Galeri</span>
+                  <span className="text-[10px] text-slate-400 mt-0.5">JPG, PNG atau WebP</span>
                   <input
                     type="file"
                     accept="image/*"
@@ -418,9 +421,9 @@ export default function POSPage() {
                 <button
                   type="button"
                   onClick={handleUseDemoPhoto}
-                  className="w-full sm:w-auto px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-zinc-300 text-xs font-medium flex items-center justify-center gap-2 transition"
+                  className="w-full sm:w-auto px-4 py-3 rounded-2xl bg-amber-50 hover:bg-amber-100/80 border border-amber-200 text-amber-900 text-xs font-bold flex items-center justify-center gap-2 transition shadow-2xs"
                 >
-                  <Sparkles className="w-4 h-4 text-emerald-400" />
+                  <Sparkles className="w-4 h-4 text-amber-600" />
                   <span>Pakai Foto Demo</span>
                 </button>
               </div>
@@ -431,9 +434,9 @@ export default function POSPage() {
         {/* Right 1 Col: Service Package, Payment & Summary */}
         <div className="space-y-5">
           {/* Services Checklist */}
-          <div className="p-5 rounded-2xl bg-[#12151c] border border-white/[0.08] space-y-4">
-            <h2 className="text-xs font-bold text-zinc-300 uppercase tracking-wider flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-[10px]">
+          <div className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-4">
+            <h2 className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
+              <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-extrabold">
                 4
               </span>
               <span>Pilih Paket Layanan</span>
@@ -446,30 +449,30 @@ export default function POSPage() {
                   <div
                     key={srv.id}
                     onClick={() => handleServiceToggle(srv.id)}
-                    className={`p-3 rounded-xl border cursor-pointer transition select-none ${
+                    className={`p-3.5 rounded-2xl border cursor-pointer transition select-none ${
                       isSelected
-                        ? 'bg-emerald-500/10 border-emerald-500/40'
-                        : 'bg-zinc-950/40 border-white/5 hover:border-white/15'
+                        ? 'bg-blue-50/80 border-blue-400 shadow-2xs'
+                        : 'bg-slate-50/60 border-slate-200/70 hover:border-slate-300'
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2.5">
                         <div
-                          className={`w-4 h-4 rounded flex items-center justify-center border ${
+                          className={`w-4 h-4 rounded-md flex items-center justify-center border ${
                             isSelected
-                              ? 'bg-emerald-500 border-emerald-500 text-white'
-                              : 'border-zinc-600'
+                              ? 'bg-blue-600 border-blue-600 text-white'
+                              : 'border-slate-300 bg-white'
                           }`}
                         >
-                          {isSelected && <CheckCircle className="w-3 h-3" />}
+                          {isSelected && <CheckCircle className="w-3.5 h-3.5" />}
                         </div>
-                        <span className="text-xs font-bold text-white">{srv.name}</span>
+                        <span className="text-xs font-bold text-slate-900">{srv.name}</span>
                       </div>
-                      <span className="text-xs font-mono font-semibold text-emerald-400">
+                      <span className="text-xs font-mono font-bold text-blue-700">
                         {formatRupiah(srv.basePrice)}
                       </span>
                     </div>
-                    <p className="text-[10px] text-zinc-400 mt-1 pl-6">{srv.description}</p>
+                    <p className="text-[10px] text-slate-500 mt-1 pl-6">{srv.description}</p>
                   </div>
                 );
               })}
@@ -478,33 +481,33 @@ export default function POSPage() {
             {/* Express Toggle */}
             <div
               onClick={() => setIsExpress(!isExpress)}
-              className={`p-3 rounded-xl border cursor-pointer transition select-none flex items-center justify-between ${
+              className={`p-3.5 rounded-2xl border cursor-pointer transition select-none flex items-center justify-between ${
                 isExpress
-                  ? 'bg-amber-500/10 border-amber-500/40'
-                  : 'bg-zinc-950/40 border-white/5 hover:border-white/15'
+                  ? 'bg-orange-50 border-orange-400 shadow-2xs'
+                  : 'bg-slate-50/60 border-slate-200/70 hover:border-slate-300'
               }`}
             >
-              <div className="flex items-center gap-2">
-                <Clock className={`w-4 h-4 ${isExpress ? 'text-amber-400' : 'text-zinc-500'}`} />
+              <div className="flex items-center gap-2.5">
+                <Clock className={`w-4 h-4 ${isExpress ? 'text-orange-600' : 'text-slate-400'}`} />
                 <div>
-                  <p className="text-xs font-bold text-white">Paket Express (1 Hari)</p>
-                  <p className="text-[10px] text-zinc-400">Selesai besok sore</p>
+                  <p className="text-xs font-bold text-slate-900">Paket Express (1 Hari)</p>
+                  <p className="text-[10px] text-slate-500">Selesai besok sore</p>
                 </div>
               </div>
-              <span className="text-xs font-mono font-semibold text-amber-400">+Rp 25.000</span>
+              <span className="text-xs font-mono font-bold text-orange-600">+Rp 25.000</span>
             </div>
           </div>
 
           {/* Payment & Ringkasan Biaya */}
-          <div className="p-5 rounded-2xl bg-[#12151c] border border-white/[0.08] space-y-4">
-            <h2 className="text-xs font-bold text-zinc-300 uppercase tracking-wider flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-[10px]">
+          <div className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-4">
+            <h2 className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
+              <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-extrabold">
                 5
               </span>
               <span>Pembayaran & Kasir</span>
             </h2>
 
-            <div className="grid grid-cols-3 gap-1.5 p-1 bg-zinc-950/60 rounded-xl border border-white/5">
+            <div className="grid grid-cols-3 gap-1.5 p-1 bg-slate-100 rounded-2xl">
               {(['PAID', 'DOWN_PAYMENT', 'UNPAID'] as PaymentStatus[]).map(st => (
                 <button
                   type="button"
@@ -515,14 +518,14 @@ export default function POSPage() {
                       setCustomPaidAmount(Math.round(grandTotal / 2));
                     }
                   }}
-                  className={`py-1.5 rounded-lg text-xs font-semibold transition ${
+                  className={`py-2 rounded-xl text-xs font-bold transition ${
                     paymentStatus === st
                       ? st === 'PAID'
-                        ? 'bg-emerald-600 text-white shadow'
+                        ? 'bg-emerald-600 text-white shadow-xs'
                         : st === 'DOWN_PAYMENT'
-                        ? 'bg-amber-600 text-white shadow'
-                        : 'bg-rose-600 text-white shadow'
-                      : 'text-zinc-400 hover:text-white'
+                        ? 'bg-amber-500 text-white shadow-xs'
+                        : 'bg-orange-500 text-white shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
                   {st === 'PAID' ? 'Lunas' : st === 'DOWN_PAYMENT' ? 'DP' : 'Belum Bayar'}
@@ -532,38 +535,38 @@ export default function POSPage() {
 
             {paymentStatus === 'DOWN_PAYMENT' && (
               <div className="space-y-1.5">
-                <label className="text-xs font-medium text-zinc-300">Nominal DP Diterima</label>
+                <label className="text-xs font-bold text-slate-700">Nominal DP Diterima</label>
                 <input
                   type="number"
                   value={customPaidAmount || ''}
                   onChange={e => setCustomPaidAmount(Number(e.target.value))}
                   placeholder="Nominal DP dalam Rupiah"
-                  className="w-full px-3 py-2 rounded-xl bg-zinc-950/60 border border-white/10 text-white text-xs font-mono focus:outline-none focus:border-amber-500"
+                  className="w-full px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-mono font-bold focus:outline-none focus:bg-white focus:border-amber-500"
                 />
               </div>
             )}
 
             {/* Summary Breakdown */}
-            <div className="p-3.5 rounded-xl bg-zinc-950/70 border border-white/5 space-y-2 text-xs">
-              <div className="flex justify-between text-zinc-400">
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2 text-xs">
+              <div className="flex justify-between text-slate-600 font-medium">
                 <span>Subtotal Layanan</span>
-                <span className="font-mono">{formatRupiah(servicesTotal)}</span>
+                <span className="font-mono font-bold">{formatRupiah(servicesTotal)}</span>
               </div>
               {isExpress && (
-                <div className="flex justify-between text-amber-400">
+                <div className="flex justify-between text-orange-700 font-medium">
                   <span>Biaya Tambahan Express</span>
-                  <span className="font-mono">+{formatRupiah(expressFee)}</span>
+                  <span className="font-mono font-bold">+{formatRupiah(expressFee)}</span>
                 </div>
               )}
-              <div className="pt-2 border-t border-white/10 flex justify-between items-baseline font-bold text-white text-sm">
+              <div className="pt-2 border-t border-slate-200 flex justify-between items-baseline font-bold text-slate-900 text-sm">
                 <span>Total Tagihan:</span>
-                <span className="text-emerald-400 font-mono text-base">{formatRupiah(grandTotal)}</span>
+                <span className="text-blue-700 font-mono text-lg font-extrabold">{formatRupiah(grandTotal)}</span>
               </div>
             </div>
 
             <button
               type="submit"
-              className="w-full py-3.5 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs tracking-wider uppercase transition shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2"
+              className="w-full py-4 px-4 rounded-2xl bg-orange-500 hover:bg-orange-600 text-white font-extrabold text-xs tracking-wider uppercase transition shadow-md shadow-orange-500/25 flex items-center justify-center gap-2"
             >
               <Receipt className="w-4 h-4" />
               <span>Simpan & Buat Nota Kasir</span>

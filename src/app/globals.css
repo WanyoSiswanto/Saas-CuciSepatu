@@ -8,25 +8,25 @@
 
   body {
     font-family: var(--font-sans);
-    background-color: #0b0d11;
-    color: #f8f9fa;
+    background-color: #F8FAFC;
+    color: #0F172A;
   }
 }
 
-/* Custom Tactical Scrollbar */
+/* Soft Clean Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b0d11;
+  background: #F1F5F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #252b36;
+  background: #CBD5E1;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #333b49;
+  background: #94A3B8;
 }
 
 /* Print Stylesheet for 58mm & 80mm Thermal Receipt Printers */

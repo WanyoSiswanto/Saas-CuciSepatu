@@ -15,8 +15,8 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'SNEAKERCARE LAB — Shoe Laundry & Restoration Management',
-  description: 'Sistem operasional dan manajemen kasir (POS), alur Kanban pengerjaan, nota thermal digital WhatsApp, dan pelacakan publik cucian sepatu.',
+  title: 'SNEAKERCARE LAB — Professional Shoe Laundry & Restoration',
+  description: 'Sistem operasional dan manajemen kasir (POS), alur Kanban workshop, nota thermal digital WhatsApp, dan pelacakan publik cucian sepatu.',
   icons: {
     icon: '/favicon.ico',
   },
@@ -28,8 +28,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id" className={`${jakarta.variable} ${jetbrains.variable} dark`}>
-      <body className="bg-[#0b0d11] text-[#f8f9fa] font-sans antialiased min-h-screen selection:bg-emerald-500/30 selection:text-emerald-300">
+    <html lang="id" className={`${jakarta.variable} ${jetbrains.variable}`}>
+      <body className="bg-[#F8FAFC] text-[#0F172A] font-sans antialiased min-h-screen selection:bg-blue-500/20 selection:text-blue-700">
         {children}
       </body>
     </html>
