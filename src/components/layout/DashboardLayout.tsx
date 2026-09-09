@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { useOrderStore } from '@/lib/storage/orderStore';
 import { STORE_INFO } from '@/lib/mockData';
+import { NyoLogo } from '@/components/ui/NyoLogo';
 
 const NAV_ITEMS = [
   { label: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
@@ -60,12 +61,10 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         {/* Brand Header */}
         <div className="p-5 border-b border-slate-100">
           <Link href="/dashboard" className="flex items-center gap-3 group" title="Kembali ke Dashboard">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-400 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition">
-              <Footprints className="w-5 h-5" />
-            </div>
+            <NyoLogo size="md" />
             <div>
               <h1 className="text-sm font-extrabold tracking-tight text-slate-900">
-                {STORE_INFO.name}
+                NyoClean
               </h1>
               <p className="text-[11px] text-blue-600 font-semibold flex items-center gap-1">
                 <span>Atelier Shoe Care</span>
@@ -162,9 +161,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
           <div className="relative w-72 bg-white border-r border-slate-200 flex flex-col z-10 p-5 shadow-2xl">
             <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold">
-                  <Footprints className="w-4 h-4" />
-                </div>
+                <NyoLogo size="sm" />
                 <div>
                   <h2 className="text-xs font-bold text-slate-900">{STORE_INFO.name}</h2>
                   <p className="text-[10px] text-blue-600 font-semibold">POS WORKSHOP</p>

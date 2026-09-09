@@ -15,7 +15,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'SNEAKERCARE LAB — Professional Shoe Laundry & Restoration',
+  title: 'NyoClean — Professional Shoe Laundry & Care Atelier',
   description: 'Sistem operasional dan manajemen kasir (POS), alur Kanban workshop, nota thermal digital WhatsApp, dan pelacakan publik cucian sepatu.',
   icons: {
     icon: '/favicon.ico',

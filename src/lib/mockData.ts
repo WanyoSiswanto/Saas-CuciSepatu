@@ -1,12 +1,12 @@
 import { Order, ServicePrice } from '@/types';
 
 export const STORE_INFO = {
-  name: 'SNEAKERCARE LAB',
+  name: 'NyoClean',
   tagline: 'Professional Shoe Laundry & Restoration Workshop',
   address: 'Jl. Boulevard Raya Blok Q No. 14, Jakarta Selatan',
   phone: '6281298765432',
   operationalHours: 'Senin - Sabtu: 09:00 - 20:00 WIB',
-  instagram: '@sneakercare.lab',
+  instagram: '@nyoclean.official',
 };
 
 export const DEFAULT_SERVICES: ServicePrice[] = [

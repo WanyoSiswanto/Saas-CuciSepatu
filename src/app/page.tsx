@@ -18,6 +18,7 @@ import {
   Phone,
 } from 'lucide-react';
 import { STORE_INFO } from '@/lib/mockData';
+import { NyoLogo } from '@/components/ui/NyoLogo';
 
 export default function HomePage() {
   const router = useRouter();
@@ -40,19 +41,17 @@ export default function HomePage() {
       {/* Top Navigation */}
       <header className="border-b border-slate-200/80 bg-white/95 backdrop-blur-md sticky top-0 z-50 shadow-2xs">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-400 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
-              <Footprints className="w-5 h-5" />
-            </div>
+          <Link href="/" className="flex items-center gap-3 group">
+            <NyoLogo size="md" />
             <div>
               <span className="font-extrabold text-sm tracking-tight text-slate-900 block">
-                {STORE_INFO.name}
+                Nyo<span className="text-blue-600">Clean</span>
               </span>
               <span className="text-[10px] text-blue-600 font-bold font-mono">
-                WORKSHOP ATELIER
+                SHOE CARE ATELIER
               </span>
             </div>
-          </div>
+          </Link>
 
           <div className="flex items-center gap-3">
             <Link
@@ -89,7 +88,7 @@ export default function HomePage() {
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
             Perawatan Sepatu Profesional <br />
             <span className="bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-500 bg-clip-text text-transparent">
-              Shoes Laundry & Care Workshop
+              NyoClean Shoe Laundry & Care
             </span>
           </h1>
 

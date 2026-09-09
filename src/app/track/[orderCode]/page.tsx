@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { getOrderByCode, getStoredOrders } from '@/lib/storage/orderStore';
 import { STORE_INFO } from '@/lib/mockData';
+import { NyoLogo } from '@/components/ui/NyoLogo';
 import { formatRupiah, formatDateIndo } from '@/lib/whatsapp';
 import { StatusBadge, PaymentBadge, STATUS_CONFIG } from '@/components/ui/StatusBadge';
 import { PhotoComparison } from '@/components/ui/PhotoComparison';
@@ -153,9 +154,7 @@ export default function PublicTrackPage({ params }: { params: Promise<{ orderCod
             className="flex items-center gap-2.5 group"
             title="Kembali ke Dashboard"
           >
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/20 group-hover:scale-105 transition">
-              <Footprints className="w-5 h-5" />
-            </div>
+            <NyoLogo size="md" />
             <div>
               <h2 className="text-sm font-extrabold tracking-tight text-slate-900 group-hover:text-blue-600 transition">
                 {STORE_INFO.name}
