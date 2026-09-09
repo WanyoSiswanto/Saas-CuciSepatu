@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import {
   Footprints,
   Plus,
@@ -15,6 +16,7 @@ import {
   AlertCircle,
   Clock,
   ShieldAlert,
+  ArrowLeft,
 } from 'lucide-react';
 import { useOrderStore } from '@/lib/storage/orderStore';
 import { DEFAULT_SERVICES } from '@/lib/mockData';
@@ -193,6 +195,13 @@ export default function POSPage() {
       {/* Page Title */}
       <div className="flex items-center justify-between">
         <div>
+          <Link
+            href="/dashboard"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-blue-600 transition mb-2 group"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition" />
+            <span>Kembali ke Dashboard</span>
+          </Link>
           <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
             <Footprints className="w-6 h-6 text-blue-600" />
             <span>Penerimaan Sepatu Masuk (POS Counter)</span>

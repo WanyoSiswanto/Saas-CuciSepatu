@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import {
   CircleDollarSign,
   TrendingUp,
@@ -10,6 +11,7 @@ import {
   PieChart,
   Receipt,
   ArrowUpRight,
+  ArrowLeft,
 } from 'lucide-react';
 import { useOrderStore } from '@/lib/storage/orderStore';
 import { formatRupiah, formatDateIndo } from '@/lib/whatsapp';
@@ -59,6 +61,13 @@ Terima kasih Kak! 🙏`;
     <div className="space-y-6 max-w-7xl mx-auto">
       {/* Page Header */}
       <div>
+        <Link
+          href="/dashboard"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-blue-600 transition mb-2 group"
+        >
+          <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition" />
+          <span>Kembali ke Dashboard</span>
+        </Link>
         <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
           <CircleDollarSign className="w-6 h-6 text-blue-600" />
           <span>Laporan Kas Masuk & Performa Layanan</span>

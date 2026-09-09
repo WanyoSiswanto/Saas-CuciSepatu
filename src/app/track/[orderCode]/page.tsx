@@ -14,6 +14,8 @@ import {
   ExternalLink,
   ChevronRight,
   ShieldCheck,
+  ArrowLeft,
+  LayoutDashboard,
 } from 'lucide-react';
 import { getOrderByCode, getStoredOrders } from '@/lib/storage/orderStore';
 import { STORE_INFO } from '@/lib/mockData';
@@ -123,6 +125,16 @@ export default function PublicTrackPage({ params }: { params: Promise<{ orderCod
               <Link href="/track/CS-2609-004" className="hover:underline">CS-2609-004</Link>
             </div>
           </div>
+
+          <div className="pt-2">
+            <Link
+              href="/dashboard"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Kembali ke Dashboard</span>
+            </Link>
+          </div>
         </div>
       </div>
     );
@@ -132,31 +144,45 @@ export default function PublicTrackPage({ params }: { params: Promise<{ orderCod
   const sisaBayar = order.totalAmount - order.paidAmount;
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 py-8 px-4 sm:px-6">
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 py-6 px-4 sm:px-6">
       <div className="max-w-2xl mx-auto space-y-6">
-        {/* Top Branding Header */}
+        {/* Top Branding Header with Quick Return Button */}
         <div className="flex items-center justify-between pb-4 border-b border-slate-200/80">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/20">
+          <Link
+            href="/dashboard"
+            className="flex items-center gap-2.5 group"
+            title="Kembali ke Dashboard"
+          >
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/20 group-hover:scale-105 transition">
               <Footprints className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-sm font-extrabold tracking-tight text-slate-900">
+              <h2 className="text-sm font-extrabold tracking-tight text-slate-900 group-hover:text-blue-600 transition">
                 {STORE_INFO.name}
               </h2>
               <p className="text-[10px] text-blue-600 font-bold font-mono">LIVE TRACKING PORTAL</p>
             </div>
-          </div>
+          </Link>
 
-          <a
-            href={`https://wa.me/${STORE_INFO.phone}`}
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-bold border border-emerald-200 transition shadow-2xs"
-          >
-            <Phone className="w-3.5 h-3.5" />
-            <span>Tanya CS</span>
-          </a>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/dashboard"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition border border-slate-200 shadow-2xs"
+            >
+              <LayoutDashboard className="w-3.5 h-3.5 text-blue-600" />
+              <span className="hidden sm:inline">Ke Dashboard</span>
+            </Link>
+
+            <a
+              href={`https://wa.me/${STORE_INFO.phone}`}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-bold border border-emerald-200 transition shadow-2xs"
+            >
+              <Phone className="w-3.5 h-3.5" />
+              <span>Tanya CS</span>
+            </a>
+          </div>
         </div>
 
         {/* Status Highlight Banner */}
@@ -348,12 +374,14 @@ export default function PublicTrackPage({ params }: { params: Promise<{ orderCod
           </div>
         </div>
 
+        {/* Bottom Navigation Shortcut */}
         <div className="text-center pt-2">
           <Link
             href="/dashboard"
-            className="text-xs text-slate-400 hover:text-blue-600 font-medium transition"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-white hover:bg-slate-50 text-slate-700 hover:text-blue-600 font-bold text-xs border border-slate-200 shadow-2xs transition"
           >
-            Masuk ke Dashboard Kasir / Admin →
+            <ArrowLeft className="w-4 h-4" />
+            <span>Kembali ke Dashboard Workshop</span>
           </Link>
         </div>
       </div>

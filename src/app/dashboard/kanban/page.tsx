@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import {
   Kanban as KanbanIcon,
   Sparkles,
@@ -14,6 +15,7 @@ import {
   X,
   AlertCircle,
   Eye,
+  ArrowLeft,
 } from 'lucide-react';
 import { useOrderStore } from '@/lib/storage/orderStore';
 import { Order, OrderStatus } from '@/types';
@@ -112,6 +114,13 @@ export default function KanbanPage() {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
+          <Link
+            href="/dashboard"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-blue-600 transition mb-2 group"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition" />
+            <span>Kembali ke Dashboard</span>
+          </Link>
           <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
             <KanbanIcon className="w-6 h-6 text-blue-600" />
             <span>Alur Pengerjaan Workshop (Kanban Board)</span>
